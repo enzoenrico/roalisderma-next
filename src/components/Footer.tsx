@@ -6,7 +6,21 @@ import Contact from "./Contact";
 export default function Footer() {
     return (
         <footer className="border-t border-gray-200 bg-transparent backdrop-blur-md pt-16 pb-8 w-screen h-screen">
-            <Contact />
+            <div className="relative w-full flex items-end justify-end">
+                <div className="fixed inset-0 -z-10 bg-white">
+                    <Image
+                        src="/contactBackground.png"
+                        alt="Background"
+                        width={500}
+                        height={2000}
+                        className="object-contain"
+                        priority
+                    />
+                </div>
+                <div className="w-2/3 ">
+                    <Contact />
+                </div>
+            </div>
             <div className="w-full bg-gray-100 p-12">
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">

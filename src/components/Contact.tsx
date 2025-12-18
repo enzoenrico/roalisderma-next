@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Contact() {
     return (
         <section id="contato" className="w-full  backdrop-blur-sm py-16 md:py-24">
