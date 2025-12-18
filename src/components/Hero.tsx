@@ -1,11 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ScrollAnimateWrapper } from './ScrollAnimateWrapper';
 
 export default function Hero() {
     return (
-        <section className="w-full h-screen bg-gray-100 py-20 flex flex-col gap-8">
-            <div className="relative w-full h-2/3 bg-white flex justify-around">
-                <div className='md:relative md:z-auto md:left-auto w-1/2 md:w-full h-full absolute z-10 left-0 flex items-center justify-center p-8'>
+        <section className="w-full h-screen bg-white backdrop-blur-sm py-20 flex flex-col gap-8">
+            <div className="relative w-full h-2/3 bg-white/40 flex justify-around">
+                <ScrollAnimateWrapper animation="fade-in-left" className='md:relative md:z-auto md:left-auto w-1/2 md:w-full h-full absolute z-10 left-0 flex items-center justify-center p-8'>
                     <Image
                         src="/Images/roalis.svg"
                         alt="Background"
@@ -14,8 +15,8 @@ export default function Hero() {
                         className="object-cover"
                         priority
                     />
-                </div>
-                <div className='w-full h-full relative'>
+                </ScrollAnimateWrapper>
+                <ScrollAnimateWrapper animation="fade-in-right" className='w-full h-full relative'>
                     <Image
                         src="/Images/modelo2.jpg"
                         alt="Background"
@@ -23,9 +24,9 @@ export default function Hero() {
                         className="object-cover md:object-contain"
                         priority
                     />
-                </div>
+                </ScrollAnimateWrapper>
             </div>
-            <div className="mx-auto px-4 text-center">
+            <ScrollAnimateWrapper animation="fade-in-up" className="mx-auto px-4 text-center">
                 <h1 className="mb-6 text-xl font-light tracking-widest text-slate-400 md:text-3xl uppercase">
                     Sistema de Tratamento Anti-Idade
                 </h1>
@@ -39,7 +40,7 @@ export default function Hero() {
                 >
                     Conheça nosso corpo Técnico
                 </Link>
-            </div>
+            </ScrollAnimateWrapper>
         </section>
     );
 }

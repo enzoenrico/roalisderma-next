@@ -8,16 +8,16 @@ export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const menuItems = [
-        { href: "#", label: "Home" },
-        { href: "#conteudos", label: "Médicos parceiros" },
-        { href: "#contato", label: "Pele" },
-        { href: "#contato", label: "Quem somos" },
-        { href: "#contato", label: "Política de privacidade" },
-        { href: "#contato", label: "Sistemas" },
+        { href: "/", label: "Home" },
+        { href: "/medicos-parceiros", label: "Médicos parceiros" },
+        { href: "/pele", label: "Pele" },
+        { href: "/quem-somos", label: "Quem somos" },
+        { href: "/politica-privacidade", label: "Política de privacidade" },
+        { href: "/sistemas", label: "Sistemas" },
     ];
 
     return (
-        <header className="w-full bg-white py-4 shadow-sm">
+        <header className="w-full bg-white backdrop-blur-md py-4 shadow-sm sticky top-0 z-50">
             <div className="flex items-center justify-between px-4 h-full w-full">
                 <Link href="/">
                     <Image

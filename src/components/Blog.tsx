@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { ScrollAnimateWrapper } from './ScrollAnimateWrapper';
 
 export default function Blog() {
   const articles = [
@@ -24,15 +25,23 @@ export default function Blog() {
   ];
 
   return (
-    <section id="conteudos" className="w-full bg-gray-50 py-16 md:py-24">
+    <section id="conteudos" className="w-full bg-white backdrop-blur-sm py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <h2 className="mb-12 text-center text-2xl font-light tracking-widest text-gray-800 md:text-3xl uppercase">
-          Conteúdos
-        </h2>
+        <ScrollAnimateWrapper animation="fade-in-down" className="mb-12">
+          <h2 className="text-center text-2xl font-light tracking-widest text-gray-800 md:text-3xl uppercase">
+            Conteúdos
+          </h2>
+        </ScrollAnimateWrapper>
         <div className="grid gap-8 md:grid-cols-3" style={{ display: 'flex', flexDirection: 'column' }}>
-          {articles.map((article) => (
-            <div key={article.id} className="bg-white shadow-sm transition hover:shadow-md" style={{ display: 'grid', width: '100%', height: '374px' }}>
-              <div className="relative h-48 w-full bg-gray-200">
+          {articles.map((article, index) => (
+            <ScrollAnimateWrapper 
+              key={article.id} 
+              animation="fade-in-up" 
+              delay={index * 0.1}
+              className="bg-white/80 backdrop-blur-sm shadow-sm transition hover:shadow-md" 
+              style={{ display: 'grid', width: '100%', height: '374px' }}
+            >
+              <div className="relative h-48 w-full bg-gray-200/80">
                  <Image
                     src="/placeholder.svg"
                     alt="Article thumbnail"
@@ -54,17 +63,17 @@ export default function Blog() {
                   Leia Mais
                 </Link>
               </div>
-            </div>
+            </ScrollAnimateWrapper>
           ))}
         </div>
-        <div className="mt-12 text-center">
+        <ScrollAnimateWrapper animation="fade-in-up" className="mt-12 text-center">
           <Link
             href="#"
             className="inline-block border-b border-gray-800 pb-1 text-sm font-medium uppercase tracking-widest text-gray-800 hover:text-gray-600 hover:border-gray-600"
           >
             Leia mais em conteúdos
           </Link>
-        </div>
+        </ScrollAnimateWrapper>
       </div>
     </section>
   );

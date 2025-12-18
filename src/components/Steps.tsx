@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { ScrollAnimateWrapper } from './ScrollAnimateWrapper';
 
 export default function Steps() {
     const steps = [
@@ -20,12 +21,14 @@ export default function Steps() {
     ];
 
     return (
-        <section className="w-full bg-white py-16 md:py-24">
+        <section className="w-full bg-white backdrop-blur-sm py-16 md:py-24">
             <div className="container mx-auto px-16 ">
-                <h2 className="mb-16 text-center text-2xl font-light tracking-widest text-gray-800 md:text-3xl uppercase">
-                    3 Passos Anti-Idade
-                </h2>
-                <div className='relative hidden md:flex gap-0 justify-center h-96 pl-28' style={{ width: '100%' }}>
+                <ScrollAnimateWrapper animation="fade-in-down" className="mb-16">
+                    <h2 className="mb-16 text-center text-2xl font-light tracking-widest text-gray-800 md:text-3xl uppercase">
+                        3 Passos Anti-Idade
+                    </h2>
+                </ScrollAnimateWrapper>
+                <ScrollAnimateWrapper animation="scale-in" className='relative hidden md:flex gap-0 justify-center h-96 pl-28' style={{ width: '100%' }}>
                     <div className='w-1/3 relative hidden md:flex ' style={{ width: '117px' }}>
                         <Image src="/Images/product.png"
                             width={117}
@@ -44,11 +47,16 @@ export default function Steps() {
                         //style={{ left: '-3px', top: '-2px', justifyContent: 'center', alignItems: 'flex-start' }}
                         />
                     </div>
-                </div>
+                </ScrollAnimateWrapper>
 
                 <div className="grid md:hidden gap-8 md:grid-cols-3">
-                    {steps.map((step) => (
-                        <div key={step.id} className="flex flex-col items-center text-center">
+                    {steps.map((step, index) => (
+                        <ScrollAnimateWrapper 
+                            key={step.id} 
+                            animation="fade-in-up" 
+                            delay={index * 0.1}
+                            className="flex flex-col items-center text-center"
+                        >
                             <div className="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-gray-100 p-4">
                                 <Image
                                     src="/placeholder.svg"
@@ -62,7 +70,7 @@ export default function Steps() {
                             <p className="text-gray-600 font-light leading-relaxed">
                                 {step.description}
                             </p>
-                        </div>
+                        </ScrollAnimateWrapper>
                     ))}
                 </div>
             </div>
