@@ -22,7 +22,6 @@ export default function Blog() {
               animation="fade-in-up" 
               delay={index * 0.1}
               className="bg-white/80 backdrop-blur-sm shadow-sm transition hover:shadow-md" 
-              style={{ display: 'grid', width: '100%', height: '374px' }}
             >
               <div className="relative h-48 w-full bg-gray-200/80">
                  <Image

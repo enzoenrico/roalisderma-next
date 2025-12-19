@@ -10,8 +10,8 @@ export default function BlogPage() {
     const articles = getAllPosts();
     return (
         <PageLayout>
-            <div className="w-full  py-16">
-                <div className="mb-12 text-center">
+            <div className="w-full  py-16 bg-white">
+                <div className="mb-12 text-center  ">
                     <h1 className="text-5xl font-bold text-black mb-4">Conteúdos</h1>
                 </div>
 

@@ -28,7 +28,7 @@ export default function Steps() {
                         3 Passos Anti-Idade
                     </h2>
                 </ScrollAnimateWrapper>
-                <ScrollAnimateWrapper animation="scale-in" className='relative hidden md:flex gap-0 justify-center h-96 pl-28' style={{ width: '100%' }}>
+                <ScrollAnimateWrapper animation="scale-in" className='relative hidden md:flex gap-0 justify-center h-96 pl-28 w-full'>
                     <div className='w-1/3 relative hidden md:flex ' style={{ width: '117px' }}>
                         <Image src="/Images/product.png"
                             width={117}

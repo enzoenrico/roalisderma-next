@@ -1,6 +1,31 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 
 export default function Contact() {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: "",
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { id, value } = e.target;
+        setFormData((prev) => ({
+            ...prev,
+            [id]: value,
+        }));
+    };
+
+    const handleSendEmail = () => {
+        const { name, email, message } = formData;
+        const subject = `Novo contato de ${name}`;
+        const body = `Nome: ${name}%0AE-mail: ${email}%0A%0AMensagem:%0A${encodeURIComponent(message)}`;
+        const mailtoLink = `mailto:contato@roalisderma.com.br?subject=${encodeURIComponent(subject)}&body=${body}`;
+        window.location.href = mailtoLink;
+    };
+
     return (
         <section id="contato" className="w-full  backdrop-blur-sm py-16 md:py-24">
             <div className="container mx-auto px-4">
@@ -13,13 +38,15 @@ export default function Contact() {
                         <p className="mb-8 text-gray-600 font-light">
                             Preencha com seus dados e envie sua mensagem para nós. Retornaremos o mais breve possível.
                         </p>
-                        <form className="space-y-6">
+                        <form className="space-y-6" onSubmit={(e) => { e.preventDefault(); handleSendEmail(); }}>
                             <div>
                                 <label htmlFor="name" className="sr-only">Nome</label>
                                 <input
                                     type="text"
                                     id="name"
                                     placeholder="NOME"
+                                    value={formData.name}
+                                    onChange={handleChange}
                                     className="w-full border-b border-gray-300 py-2 text-sm uppercase tracking-wide text-gray-800 placeholder-gray-400 focus:border-gray-800 focus:outline-none"
                                 />
                             </div>
@@ -29,6 +56,8 @@ export default function Contact() {
                                     type="email"
                                     id="email"
                                     placeholder="E-MAIL"
+                                    value={formData.email}
+                                    onChange={handleChange}
                                     className="w-full border-b border-gray-300 py-2 text-sm uppercase tracking-wide text-gray-800 placeholder-gray-400 focus:border-gray-800 focus:outline-none"
                                 />
                             </div>
@@ -38,6 +67,8 @@ export default function Contact() {
                                     id="message"
                                     rows={4}
                                     placeholder="MENSAGEM"
+                                    value={formData.message}
+                                    onChange={handleChange}
                                     className="w-full border-b border-gray-300 py-2 text-sm uppercase tracking-wide text-gray-800 placeholder-gray-400 focus:border-gray-800 focus:outline-none resize-none"
                                 ></textarea>
                             </div>
