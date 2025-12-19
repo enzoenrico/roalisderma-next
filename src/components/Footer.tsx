@@ -5,9 +5,9 @@ import Contact from "./Contact";
 
 export default function Footer() {
     return (
-        <footer className="border-t border-gray-200 bg-transparent backdrop-blur-md pt-16 pb-8 w-screen h-screen">
-            <div className="relative w-full flex items-end justify-end">
-                <div className="fixed inset-0 -z-10 bg-white">
+        <footer className="border-t border-gray-200 bg-transparent backdrop-blur-md pt-16 pb-8 w-full md:w-screen h-auto md:h-screen">
+            <div className="relative w-full flex items-end justify-center md:justify-end px-4 md:px-0">
+                <div className="hidden md:flex fixed inset-0 -z-10 bg-white">
                     <Image
                         src="/contactBackground.png"
                         alt="Background"
@@ -17,7 +17,7 @@ export default function Footer() {
                         priority
                     />
                 </div>
-                <div className="w-2/3 ">
+                <div className="w-full md:w-2/3">
                     <Contact />
                 </div>
             </div>

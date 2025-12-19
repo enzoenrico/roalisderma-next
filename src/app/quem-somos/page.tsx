@@ -7,7 +7,7 @@ export default function QuemSomos() {
     return (
         <PageLayout>
             <GrayHeader
-                title='SUSTEMA DE TRATAMENTO ANTI-IDADE'
+                title='SISTEMA DE TRATAMENTO ANTI-IDADE'
                 description='Adotamos uma abordagem única, aprofundada e baseada nos mais recentes estudos científicos sobre o envelhecimento da pele.'
             />
 
