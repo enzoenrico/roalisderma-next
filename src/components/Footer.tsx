@@ -13,7 +13,7 @@ export default function Footer() {
                         alt="Background"
                         width={500}
                         height={2000}
-                        className="object-contain"
+                        className="object-cover"
                         priority
                     />
                 </div>

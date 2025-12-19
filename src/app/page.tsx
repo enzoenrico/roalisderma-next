@@ -6,9 +6,9 @@ import Blog from '@/components/Blog';
 export default function Home() {
 	return (
 		<PageLayout>
-			<Hero />
-			<Steps />
-			<Blog />
+        <Hero />
+        <Steps />
+        <Blog />
 		</PageLayout>
 	);
 }

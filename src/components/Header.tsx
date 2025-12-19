@@ -12,13 +12,14 @@ export default function Header() {
         { href: "/medicos-parceiros", label: "Médicos parceiros" },
         { href: "/pele", label: "Pele" },
         { href: "/quem-somos", label: "Quem somos" },
+        { href: "/blog", label: "Conteúdos" },
         { href: "/politica-privacidade", label: "Política de privacidade" },
         { href: "/sistemas", label: "Sistemas" },
     ];
 
     return (
         <header className="w-full bg-white backdrop-blur-md py-4 shadow-sm sticky top-0 z-50">
-            <div className="flex items-center justify-between px-4 h-full w-full">
+            <div className="flex items-center justify-around px-4 h-full w-full">
                 <Link href="/">
                     <Image
                         src="/Images/logo.svg"
@@ -28,7 +29,7 @@ export default function Header() {
                         className="h-12 w-12"
                     />
                 </Link>
-                <div className='hidden md:flex flex-row w-4/5 justify-evenly'>
+                <div className='hidden md:flex flex-row w-full justify-evenly'>
                     {menuItems.map((item) => (
                         <Link key={item.href} href={item.href} className="hover:text-gray-900 text-gray-700">
                             {item.label}
@@ -37,7 +38,7 @@ export default function Header() {
                 </div>
                 {/* Mobile menu button */}
                 <div className="md:hidden relative">
-                    <button 
+                    <button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
                         className="text-gray-600 hover:text-gray-900"
                     >
@@ -45,7 +46,7 @@ export default function Header() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                         </svg>
                     </button>
-                    
+
                     {/* Dropdown menu */}
                     {isMenuOpen && (
                         <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-50">

@@ -11,7 +11,7 @@ export default function MedicosParceiros() {
                 description='Veja a seguir a relação dos MÉDICOS que já conhecem e utilizam a metodologia ROALISDERMA e seu SISTEMA DE TRATAMENTO ANTI-IDADE'
             />
 
-            <div className=" px-4 w-full bg-gray-200">
+            <div className="  px-4 w-full bg-gray-200 container">
                 <ScrollAnimateWrapper animation='fade-in-left'>
                     <DoctorCard
                         imageSrc="/Images/doctor.jpg"

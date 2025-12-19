@@ -21,39 +21,42 @@ export default function Steps() {
     ];
 
     return (
-        <section className="w-full bg-white backdrop-blur-sm py-16 md:py-24">
-            <div className="container mx-auto px-16 ">
-                <ScrollAnimateWrapper animation="fade-in-down" className="mb-16">
-                    <h2 className="mb-16 text-center text-2xl font-light tracking-widest text-gray-800 md:text-3xl uppercase">
-                        3 Passos Anti-Idade
-                    </h2>
-                </ScrollAnimateWrapper>
-                <ScrollAnimateWrapper animation="scale-in" className='relative hidden md:flex gap-0 justify-center h-96 pl-28 w-full'>
-                    <div className='w-1/3 relative hidden md:flex ' style={{ width: '117px' }}>
-                        <Image src="/Images/product.png"
-                            width={117}
-                            height={200}
-                            alt='Product'
-                            className='object-contain '
-                        />
-                    </div>
-                    <div className='w-2/3 relative hidden md:flex justify-start items-start' >
-                        <Image
-                            src="/Images/steps.png"
-                            width={800}
-                            height={200}
-                            alt='Steps'
-                            className='flex left-0 justify-start items-start object-cover'
-                        //style={{ left: '-3px', top: '-2px', justifyContent: 'center', alignItems: 'flex-start' }}
-                        />
-                    </div>
-                </ScrollAnimateWrapper>
+        <section className="relative w-full py-16 md:py-24">
+            <div className="absolute inset-0 z-0 bg-white">
+                <Image
+                    src="/image.png"
+                    width={800}
+                    height={400}
+                    alt="Background"
+                    className="object-contain hidden md:flex w-full h-full pr-[30rem]"
+                />
+            </div>
+            <div className='flex flex-row items-end justify-end w-full'>
+                <div className="container relative z-10  flex flex-col items-center justify-center w-1/2 mr-8">
+                    <ScrollAnimateWrapper animation="fade-in-down" className="mb-6 w-1/2 ">
+                        <h2 className="mb-12 text-center text-2xl font-light tracking-widest text-gray-800 md:text-3xl uppercase">
+                            3 Passos Anti-Idade
+                        </h2>
+                    </ScrollAnimateWrapper>
+                    <ScrollAnimateWrapper animation="scale-in" className='hidden md:flex justify-end items-start w-full '>
+                        <div className='relative'>
+                            <Image
+                                src="/Images/steps.png"
+                                width={800}
+                                height={105}
+                                alt='Steps'
+                                className='object-contain'
+                            />
+                        </div>
+                    </ScrollAnimateWrapper>
+                </div>
 
+                {/* layout de celular */}
                 <div className="grid md:hidden gap-8 md:grid-cols-3">
                     {steps.map((step, index) => (
-                        <ScrollAnimateWrapper 
-                            key={step.id} 
-                            animation="fade-in-up" 
+                        <ScrollAnimateWrapper
+                            key={step.id}
+                            animation="fade-in-up"
                             delay={index * 0.1}
                             className="flex flex-col items-center text-center"
                         >

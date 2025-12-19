@@ -85,11 +85,10 @@ const processes = [
 export default function Pele() {
     return (
         <PageLayout>
-            <div className="">
-                <ScrollAnimateWrapper animation="fade-in-up">
-                    <GrayHeader title='PELE' description='PROCESSOS BIOLÓGICOS ENVOLVIDOS NO ENVELHECIMENTO
+            <GrayHeader title='PELE' description='PROCESSOS BIOLÓGICOS ENVOLVIDOS NO ENVELHECIMENTO
  TODOS ESSES PROCESSOS SÃO AVALIADOS PELO SISTEMA ROALISDERMA ANTI-IDADE.' />
-                </ScrollAnimateWrapper>
+
+            <div className="container">
 
                 <div className='bg-white w-full h-screen'>
                     <ScrollAnimateWrapper animation="fade-in-right" className='w-full h-full relative'>
@@ -103,7 +102,7 @@ export default function Pele() {
                     </ScrollAnimateWrapper>
                 </div>
 
-                <div className="w-full flex flex-col gap-4">
+                <div className="w-full flex flex-col gap-4 ">
                     {processes.map((process, index) => (
                         <ScrollAnimateWrapper
                             key={index}

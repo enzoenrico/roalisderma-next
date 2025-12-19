@@ -12,7 +12,7 @@ export default function Hero() {
                         alt="Background"
                         width={500}
                         height={200}
-                        className="object-cover"
+                        className="object-cover flex items-center justify-center md:ml-24"
                         priority
                     />
                 </ScrollAnimateWrapper>
@@ -35,7 +35,7 @@ export default function Hero() {
                     estudos científicos sobre o envelhecimento da pele.
                 </p>
                 <Link
-                    href="#corpotecnico"
+                    href="/quem-somos"
                     className="inline-block border border-gray-800 bg-transparent px-8 py-3 text-sm font-medium uppercase tracking-widest text-gray-800 transition hover:bg-gray-800 hover:text-white"
                 >
                     Conheça nosso corpo Técnico
