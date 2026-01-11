@@ -1,7 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
+
+type Status = "idle" | "loading" | "success" | "error";
 
 export default function Contact() {
 	const [formData, setFormData] = useState({
@@ -9,6 +10,8 @@ export default function Contact() {
 		email: "",
 		message: "",
 	});
+	const [status, setStatus] = useState<Status>("idle");
+	const [errorMessage, setErrorMessage] = useState("");
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		const { id, value } = e.target;
@@ -18,12 +21,33 @@ export default function Contact() {
 		}));
 	};
 
-	const handleSendEmail = () => {
-		const { name, email, message } = formData;
-		const subject = `Novo contato de ${name}`;
-		const body = `Nome: ${name}%0AE-mail: ${email}%0A%0AMensagem:%0A${encodeURIComponent(message)}`;
-		const mailtoLink = `mailto:contato@roalisderma.com.br?subject=${encodeURIComponent(subject)}&body=${body}`;
-		window.location.href = mailtoLink;
+	const handleSubmit = async (e: React.FormEvent) => {
+		e.preventDefault();
+		setStatus("loading");
+		setErrorMessage("");
+
+		try {
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			});
+
+			if (!response.ok) {
+				const data = await response.json();
+				throw new Error(data.error || "Erro ao enviar mensagem");
+			}
+
+			setStatus("success");
+			setFormData({ name: "", email: "", message: "" });
+		} catch (error) {
+			setStatus("error");
+			setErrorMessage(
+				error instanceof Error ? error.message : "Erro ao enviar mensagem"
+			);
+		}
 	};
 
 	return (
@@ -38,7 +62,20 @@ export default function Contact() {
 						<p className="mb-8 text-gray-600 font-light">
 							Preencha com seus dados e envie sua mensagem para nós. Retornaremos o mais breve possível.
 						</p>
-						<form className="space-y-6" onSubmit={(e) => { e.preventDefault(); handleSendEmail(); }}>
+
+						{status === "success" && (
+							<div className="mb-6 p-4 bg-green-50 border border-green-200 text-green-800 text-sm">
+								Mensagem enviada com sucesso! Entraremos em contato em breve.
+							</div>
+						)}
+
+						{status === "error" && (
+							<div className="mb-6 p-4 bg-red-50 border border-red-200 text-red-800 text-sm">
+								{errorMessage}
+							</div>
+						)}
+
+						<form className="space-y-6" onSubmit={handleSubmit}>
 							<div>
 								<label htmlFor="name" className="sr-only">Nome</label>
 								<input
@@ -47,7 +84,9 @@ export default function Contact() {
 									placeholder="NOME"
 									value={formData.name}
 									onChange={handleChange}
-									className="w-full border-b border-gray-300 py-2 text-sm  tracking-wide text-gray-800 placeholder-gray-400 focus:border-gray-800 focus:outline-none"
+									required
+									disabled={status === "loading"}
+									className="w-full border-b border-gray-300 py-2 text-sm  tracking-wide text-gray-800 placeholder-gray-400 focus:border-gray-800 focus:outline-none disabled:opacity-50"
 								/>
 							</div>
 							<div>
@@ -58,7 +97,9 @@ export default function Contact() {
 									placeholder="E-MAIL"
 									value={formData.email}
 									onChange={handleChange}
-									className="w-full border-b border-gray-300 py-2 text-sm  tracking-wide text-gray-800 placeholder-gray-400 focus:border-gray-800 focus:outline-none"
+									required
+									disabled={status === "loading"}
+									className="w-full border-b border-gray-300 py-2 text-sm  tracking-wide text-gray-800 placeholder-gray-400 focus:border-gray-800 focus:outline-none disabled:opacity-50"
 								/>
 							</div>
 							<div>
@@ -69,14 +110,17 @@ export default function Contact() {
 									placeholder="MENSAGEM"
 									value={formData.message}
 									onChange={handleChange}
-									className="w-full border-b border-gray-300 py-2 text-sm  tracking-wide text-gray-800 placeholder-gray-400 focus:border-gray-800 focus:outline-none resize-none"
+									required
+									disabled={status === "loading"}
+									className="w-full border-b border-gray-300 py-2 text-sm  tracking-wide text-gray-800 placeholder-gray-400 focus:border-gray-800 focus:outline-none resize-none disabled:opacity-50"
 								></textarea>
 							</div>
 							<button
 								type="submit"
-								className="mt-4 border border-gray-800 bg-transparent px-8 py-2 text-sm font-medium uppercase tracking-widest text-gray-800 transition hover:bg-gray-800 hover:text-white"
+								disabled={status === "loading"}
+								className="mt-4 border border-gray-800 bg-transparent px-8 py-2 text-sm font-medium uppercase tracking-widest text-gray-800 transition hover:bg-gray-800 hover:text-white disabled:opacity-50 disabled:cursor-not-allowed"
 							>
-								Enviar
+								{status === "loading" ? "Enviando..." : "Enviar"}
 							</button>
 						</form>
 					</div>

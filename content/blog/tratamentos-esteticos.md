@@ -3,7 +3,7 @@ title: "CADA TIPO DE PELE POSSUI CARACTERÍSTICAS ÚNICAS "
 excerpt: "Conheça as últimas inovações em tratamentos estéticos que garantem resultados naturais e eficazes."
 date: "1024-05-17"
 author: "Dr. Carlos Mendes"
-image: "/blog/tratamentos-esteticos.jpg"
+image: "/blog/image.png"
 category: "Estética"
 ---
 

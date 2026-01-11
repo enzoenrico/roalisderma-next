@@ -3,7 +3,7 @@ title: "FATORES EXTRÍNSECOS PODEM CAUSAR ENVELHECIMENTO PRECOCE COM EFEITOS EST
 excerpt: "Aprenda a criar uma rotina de cuidados diários que se adequa ao seu tipo de pele."
 date: "2021-05-12"
 author: "Dra. Beatriz Costa"
-image: "/blog/rotina-cuidados.jpg"
+image: "/blog/image.png"
 category: "Cuidados Pessoais"
 ---
 

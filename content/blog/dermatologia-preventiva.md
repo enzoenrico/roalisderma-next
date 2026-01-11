@@ -3,7 +3,7 @@ title: "O ENVELHECIMENTO DA PELE É ACOMPANHADO POR ALTERAÇÕES EM SUA ESTRUTUR
 excerpt: "Saiba como a dermatologia preventiva pode ajudar a manter sua pele saudável e radiante ao longo dos anos."
 date: "2021-17-05"
 author: "Dra. Amanda Silva"
-image: "/blog/dermatologia-preventiva.jpg"
+image: "/blog/image.png"
 category: "Saúde da Pele"
 ---
 
