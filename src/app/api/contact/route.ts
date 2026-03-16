@@ -17,10 +17,9 @@ export async function POST(request: NextRequest) {
 
 		const { data, error } = await resend.emails.send({
 			from: "Contato Site <onboarding@resend.dev>",
-			to: "e.enrico2005@gmail.com",
-			replyTo: email,
-			subject: `Novo contato de ${name}`,
-			text: `Nome: ${name}\nE-mail: ${email}\n\nMensagem:\n${message}`,
+			to: email,
+			subject: `Obrigado pelo contato, ${name}!`,
+			text: `Olá ${name},\n\nRecebemos sua mensagem e entraremos em contato em breve.\n\nSua mensagem:\n${message}\n\nAtenciosamente,\nEquipe Roalisderma`,
 		});
 
 		if (error) {
